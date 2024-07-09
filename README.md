@@ -20,14 +20,13 @@ Our research has introduced an innovative approach that addresses the challenges
 depth estimation in visual servoing for digestive endoscopy.
 Our investigation has revealed that the struggles of self-supervised depth estimation in low-texture scenes stem from inaccurate photometric reconstruction losses. To overcome this, we have introduced the point-matching loss, which refines the reprojected points. Furthermore, during the training process, data augmentation is achieved through batch image shuffle loss, significantly improving the accuracy and generalisation capability of the depth model. The combined contributions of the point matching loss and batch image shuffle loss have boosted the baseline accuracy by a minimum of 5% on both the C3VD and SimCol datasets, surpassing the generalisability of ground truth depth-supervised baselines when applied to upper-GI datasets. Moreover, the successful implementation of our robotic platform for automatic intervention in digestive endoscopy demonstrates the practical and impactful application of monocular depth estimation technology.
 
+
 ## Performance
+
 <p align="left">
 <img src="assets/performance.jpg" width=80% height=80% 
 class="center">
 </p>
-
-## Supplementrary Material
-<iframe width="560" height="315" src="https://www.youtube.com/embed/7mAyTpjI13Q?si=JvnwjsjJyxkJ7LiD" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
 
 
 ## Installation
@@ -35,56 +34,165 @@ class="center">
 We tested our code on a server with Ubuntu 18.04.6, cuda 11.1, gcc 7.5.0
 1. Clone project
 ```
-git clone https://github.com/howardchina/MonoLoT.git
-cd MonoLoT
+$ git clone https://github.com/howardchina/MonoLoT.git
+$ cd MonoLoT
 ```
 2. Install environment
 ```
-conda create --name monolot --file requirements.txt
-conda activate monolot
+$ conda create --name monolot --file requirements.txt
+$ conda activate monolot
 ```
 
 ## Data
 
 First, create a ```data/``` folder inside the project path by 
 ```
-mkdir data
+$ mkdir data
 ```
 
 The data structure will be organised as follows:
 
 ```
-data/
-├── dataset_name
-│   ├── scene1/
-│   │   ├── images
-│   │   │   ├── IMG_0.jpg
-│   │   │   ├── IMG_1.jpg
-│   │   │   ├── ...
-│   │   ├── sparse/
-│   │       └──0/
-│   ├── scene2/
-│   │   ├── images
-│   │   │   ├── IMG_0.jpg
-│   │   │   ├── IMG_1.jpg
-│   │   │   ├── ...
-│   │   ├── sparse/
-│   │       └──0/
+$ tree data
+data
+├── c3vd_v2
+│   ├── imgs -> <c3vd_v2_img_dir>
+│   └── matcher_results
+│       ├── test.npy
+│       ├── train.npy
+│       └── val.npy
+└── simcol_complete
+    ├── imgs -> <simcol_img_dir>
+    └── matcher_results
+        ├── test_352x352.npy
+        ├── train_352x352.npy
+        └── val_352x352.npy
 ...
 ```
 
- - For instance: `./data/blending/drjohnson/`
- - For instance: `./data/bungeenerf/amsterdam/`
- - For instance: `./data/mipnerf360/bicycle/`
- - For instance: `./data/nerf_synthetic/chair/`
- - For instance: `./data/tandt/train/`
+Soft link (```->```) the image folders to this workspace.
+ 
+The image folder of c3vd_v2 (<c3vd_v2_img_dir>) will be organised as follows:
 
+```
+$ cd c3vd_v2
+$ tree imgs
+imgs
+├── cecum_t1_a_under_review
+│   ├── 0000_color.png
+│   ├── 0000_depth.tiff
+│   ├── 0001_color.png
+│   ├── 0001_depth.tiff
+│   ├── 0002_color.png
+│   ├── 0002_depth.tiff
+│   ├── 0003_color.png
+│   ├── 0003_depth.tiff
+│   ├── 0004_color.png
+│   ├── 0004_depth.tiff
+│   ├── ...
+├── cecum_t1_b_under_review
+│   ├── ...
+├── cecum_t2_a_under_review
+├── cecum_t2_b_under_review
+├── cecum_t2_c_under_review
+├── cecum_t3_a_under_review
+├── cecum_t4_a_under_review
+├── cecum_t4_b_under_review
+├── desc_t4_a_under_review
+├── sigmoid_t1_a_under_review
+├── sigmoid_t2_a_under_review
+├── sigmoid_t3_a_under_review
+├── sigmoid_t3_b_under_review
+├── trans_t1_a_under_review
+├── trans_t1_b_under_review
+├── trans_t2_a_under_review
+├── trans_t2_b_under_review
+├── trans_t2_c_under_review
+├── trans_t3_a_under_review
+├── trans_t3_b_under_review
+├── trans_t4_a_under_review
+└── trans_t4_b_under_review
+```
+
+The image folder of simcol_complete (<simcol_img_dir>) will be organised as follows:
+
+```
+$ cd ..
+$ cd simcol_complete
+$ tree imgs
+imgs
+├── SyntheticColon_I
+│   ├── Test_labels
+│   │   ├── Frames_S10
+│   │   │   ├── Depth_0000.png
+│   │   │   ├── Depth_0001.png
+│   │   │   ├── Depth_0002.png
+│   │   │   ├── Depth_0003.png
+│   │   │   ├── Depth_0004.png
+│   │   │   ├── Depth_0005.png
+│   │   │   ...
+│   │   │   ├── Depth_1200.png
+│   │   │   ├── FrameBuffer_0000.png
+│   │   │   ├── FrameBuffer_0001.png
+│   │   │   ├── FrameBuffer_0002.png
+│   │   │   ├── FrameBuffer_0003.png
+│   │   │   ├── FrameBuffer_0004.png
+│   │   │   ├── FrameBuffer_0005.png
+│   │   │   ...
+│   │   │   └── FrameBuffer_1200.png
+│   │   ├── Frames_S15
+│   │   └── Frames_S5
+│   ├── Train
+│   │   ├── Frames_S1
+│   │   ├── Frames_S11
+│   │   ├── Frames_S12
+│   │   ├── Frames_S13
+│   │   ├── Frames_S2
+│   │   ├── Frames_S3
+│   │   ├── Frames_S6
+│   │   ├── Frames_S7
+│   │   └── Frames_S8
+│   └── Val
+│       ├── Frames_S14
+│       ├── Frames_S4
+│       └── Frames_S9
+├── SyntheticColon_II
+│   ├── Test_labels
+│   │   ├── Frames_B10
+│   │   ├── Frames_B15
+│   │   └── Frames_B5
+│   ├── Train
+│   │   ├── Frames_B1
+│   │   ├── Frames_B11
+│   │   ├── Frames_B12
+│   │   ├── Frames_B13
+│   │   ├── Frames_B2
+│   │   ├── Frames_B3
+│   │   ├── Frames_B6
+│   │   ├── Frames_B7
+│   │   └── Frames_B8
+│   └── Val
+│       ├── Frames_B14
+│       ├── Frames_B4
+│       └── Frames_B9
+└── SyntheticColon_III
+    ├── Test_labels
+    │   ├── Frames_O1
+    │   ├── Frames_O2
+    │   └── Frames_O3
+    └── Train
+```
 
 ### Public Data (We follow suggestions from [Scaffold-GS](https://github.com/city-super/Scaffold-GS))
 
- - The **BungeeNeRF** dataset is available in [Google Drive](https://drive.google.com/file/d/1nBLcf9Jrr6sdxKa1Hbd47IArQQ_X8lww/view?usp=sharing)/[百度网盘[提取码:4whv]](https://pan.baidu.com/s/1AUYUJojhhICSKO2JrmOnCA). 
- - The **MipNeRF360** scenes are provided by the paper author [here](https://jonbarron.info/mipnerf360/). And we test on its entire 9 scenes ```bicycle, bonsai, counter, garden, kitchen, room, stump, flowers, treehill```. 
- - The SfM datasets for **Tanks&Temples** and **Deep Blending** are hosted by 3D-Gaussian-Splatting [here](https://repo-sam.inria.fr/fungraph/3d-gaussian-splatting/datasets/input/tandt_db.zip). Download and uncompress them into the ```data/``` folder.
+For both training and inference:
+ - The **C3VD** dataset is available in its [Homepage](https://durrlab.github.io/C3VD/). 
+ - The **SimCol** dataset is provided by the paper author [here](https://sophiabano.github.io/). 
+
+For inference only:
+ - The **UpperGI** dataset is provided by the paper author [here](https://howardchina.github.io).
+ - The **EndoSLAM** dataset is available in its [Homepage](https://durrlab.github.io/C3VD/). 
+ - The **EndoMapper** dataset is available in its [Homepage](https://durrlab.github.io/C3VD/). 
 
 ### Custom Data
 

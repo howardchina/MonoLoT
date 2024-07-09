@@ -1,0 +1,15 @@
+# selected packages
+# for reference
+jupyter=1.0.0=py38h06a4308_8
+kornia=0.6.8=pypi_0
+kornia-moons=0.2.6=pypi_0
+kornia-rs=0.0.8=pypi_0
+numpy=1.24.4=pypi_0
+notebook=6.5.4=py38h06a4308_0
+opencv-python=4.6.0.66=pypi_0
+python=3.8.16=h955ad1f_4
+tensorboard=2.10.0=py38h06a4308_0
+tensorboardx=2.2=pyhd3eb1b0_0
+torch=1.8.1+cu111=pypi_0
+torchvision=0.9.1+cu111=pypi_0
+tqdm=4.64.1=pypi_0

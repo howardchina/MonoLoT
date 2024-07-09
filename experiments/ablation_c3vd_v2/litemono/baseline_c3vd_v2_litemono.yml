@@ -1,0 +1,45 @@
+## train c3vd_v2
+## trainer
+log_dir: results
+run_train: true
+num_epochs: 35
+batch_size: 12
+mypretrain: /home/data/workspace/heqi/monogastroendo/models/lite-mono-pretrain.pth
+weights_init: pretrained # choices=["pretrained", "scratch"]
+save_checkpoint_freq: 1
+log_freq: 100
+run_val: false
+
+
+## optimizer
+scheduler_step_size: 31
+lr: [0.0001, 0.000005, 36, 0.0001, 0.00001, 36]
+
+## loss
+disable_matcher: true
+disparity_smoothness: 0.001
+
+## dataloader
+data_path: /home/data/workspace/heqi/monogastroendo/rect_c3vd_data_v2
+split: c3vd_v2 # choices=["eigen_zhou", "eigen_full", "odom", "benchmark", "yifanwang", "yifanwang_cutoff1", "my_kitti", "simcol", "c3vd"]
+dataset: C3VDDataset # choices=["kitti", "kitticorres", "kitti_odom", "kitti_depth", "kitti_test", "yifanwang", "my_kitti", "simcol", "simcolcorres", "c3vd", "c3vdcorres"]
+png: true
+height: 256
+width: 320
+matcher_result_train: data/c3vd_v2/matcher_results/train.npy
+matcher_result_val: data/c3vd_v2/matcher_results/val.npy
+matcher_result_test: data/c3vd_v2/matcher_results/test.npy
+load_depth: true
+
+## model
+model_name: baseline_depthnet_c3vd_v2_litemono
+model: EstimateDepth
+model_str: lite-mono # choices=["lite-mono", "lite-mono-small", "lite-mono-tiny", "lite-mono-8m", "monodepth2"]
+weight_decay: 0.01
+drop_path: 0.2
+num_layers: 18 # choices=[18, 34, 50, 101, 152]
+disparity_smoothness: 0.001
+scales: [0,1,2]
+min_depth: 0.001
+max_depth: 1.
+frame_ids: [0,-1,1]

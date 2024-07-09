@@ -1,0 +1,45 @@
+## train c3vd_v2
+## trainer
+log_dir: results
+run_train: true
+num_epochs: 25
+batch_size: 12
+save_checkpoint_freq: 1
+log_freq: 100
+run_val: true
+run_test: true
+metric_str_exclude: ["loss/photometric_1", "loss/photometric_2", "loss/photometric_3", "de/abs_rel", "de/sq_rel", "de/rms", "da/a2", "da/a3"]
+
+## checkpoints
+weights_init: pretrained # choices=["pretrained", "scratch"]
+
+## optimizer
+lr: [0.0001, 0.00001, 26, 0.0001, 0.00001, 26]
+
+## loss
+disable_automasking: true
+supervised: true
+
+## dataloader
+data_path: data/c3vd_v2/imgs
+split: c3vd_v2 # choices=["eigen_zhou", "eigen_full", "odom", "benchmark", "yifanwang", "yifanwang_cutoff1", "my_kitti", "simcol", "c3vd"]
+dataset: C3VDDataset # choices=["kitti", "kitticorres", "kitti_odom", "kitti_depth", "kitti_test", "yifanwang", "my_kitti", "simcol", "simcolcorres", "c3vd", "c3vdcorres"]
+png: true
+height: 256
+width: 320
+
+load_depth: true
+
+## model
+model_name: supervised_depthnet_c3vd_v2_litemono
+model: EstimateDepthSupervised
+model_str: lite-mono # choices=["lite-mono", "lite-mono-small", "lite-mono-tiny", "lite-mono-8m", "monodepth2"]
+weight_decay: 0.01
+drop_path: 0.2
+num_layers: 18 # choices=[18, 34, 50, 101, 152]
+scales: [0,1,2]
+min_depth: 0.001
+max_depth: 1.0
+frame_ids: [0]
+min_gt_depth: 0.001
+max_gt_depth: 1.0

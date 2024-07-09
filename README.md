@@ -207,7 +207,7 @@ For both training and inference:
  - The **SimCol** dataset is available in [rdr.ucl](https://rdr.ucl.ac.uk/articles/dataset/Simcol3D_-_3D_Reconstruction_during_Colonoscopy_Challenge_Dataset/24077763). 
 
 For inference only:
- - The **UpperGI** dataset is available in [Jianguoyun](https://www.jianguoyun.com/p/DRoZPfUQzsq_Cxj23qIFIAA).
+ - The **UpperGI** dataset is available in [Nutstore](https://www.jianguoyun.com/p/DRoZPfUQzsq_Cxj23qIFIAA).
  - The **EndoSLAM** dataset is available in [Mendeley](https://data.mendeley.com/datasets/cd2rtzm23r/1). 
  - The **EndoMapper** dataset is available in [Synapse](https://www.synapse.org/Synapse:syn26707219/files/). 
 
@@ -307,6 +307,12 @@ The code will automatically run **training**.
 
 ## Inference
 
+Evaluation:
+- Please refers to `playground\heqi\eval_c3vd.ipynb` and `playground\heqi\eval_simcol_complete_align_with_paper.ipynb`.
+
+- Existing `checkpoints` are avilable at [Nutstore](https://www.jianguoyun.com/p/DZJA2lsQy4rfDBipvc0FIAA).
+
+- If you would like to further visualise these models, our codes for `visulisation` are also provide to download for reference at [Nutstore](https://www.jianguoyun.com/p/DRjTzqgQy4rfDBirvc0FIAA).
 
 ## Contact
 

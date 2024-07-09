@@ -3,7 +3,7 @@
 log_dir: results
 run_train: true
 num_epochs: 25
-batch_size: 12
+batch_size: 6
 save_checkpoint_freq: 1
 log_freq: 100
 run_val: true
@@ -19,16 +19,15 @@ weights_init: pretrained # choices=["pretrained", "scratch"]
 # load_weights_folder: /home/data/workspace/heqi/matchingloss/results/RC_baseline_depthnet_c3vd_v2_monodepth2/models/weights_20
 
 ## optimizer
-lr: [0.0001, 0.00001, 26, 0.0001, 0.00001, 26]
+lr: [0.00003333, 0.00001, 26, 0.00006667, 0.00001, 26]
 
 ## loss
 disable_matcher: true
 disparity_smoothness: 0.001
-ratio_consistency: false
-ratio_consistency_crop: true
+ratio_consistency: true
 
 ## dataloader
-data_path: /home/data/workspace/heqi/monogastroendo/rect_c3vd_data_v2
+data_path: /mnt/home1/heqi/matchingloss/data/c3vd_v2/imgs
 split: c3vd_v2 # choices=["eigen_zhou", "eigen_full", "odom", "benchmark", "yifanwang", "yifanwang_cutoff1", "my_kitti", "simcol", "c3vd"]
 dataset: C3VDDataset # choices=["kitti", "kitticorres", "kitti_odom", "kitti_depth", "kitti_test", "yifanwang", "my_kitti", "simcol", "simcolcorres", "c3vd", "c3vdcorres"]
 png: true
@@ -40,9 +39,9 @@ matcher_result_test: data/c3vd_v2/matcher_results/test.npy
 load_depth: true
 
 ## model
-model_name: RCC_baseline_depthnet_c3vd_v2_monodepth2
+model_name: c3vd_v2/RC_baseline_depthnet_c3vd_v2_monovit
 model: EstimateDepth
-model_str: monodepth2 # choices=["lite-mono", "lite-mono-small", "lite-mono-tiny", "lite-mono-8m", "monodepth2"]
+model_str: monovit # choices=["lite-mono", "lite-mono-small", "lite-mono-tiny", "lite-mono-8m", "monodepth2"]
 weight_decay: 0.01
 drop_path: 0.2
 num_layers: 18 # choices=[18, 34, 50, 101, 152]

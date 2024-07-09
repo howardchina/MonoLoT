@@ -2,44 +2,42 @@
 ## trainer
 log_dir: results
 run_train: true
-num_epochs: 35
+num_epochs: 25
 batch_size: 12
-num_workers: 4
 save_checkpoint_freq: 1
-log_freq: 250
+log_freq: 100
+run_val: true
+run_test: true
+metric_str_exclude: ["loss/photometric_1", "loss/photometric_2", "loss/photometric_3", "de/abs_rel", "de/sq_rel", "de/rms", "da/a2", "da/a3"]
 
 ## checkpoints
 weights_init: pretrained # choices=["pretrained", "scratch"]
-start_epoch: 13
-load_weights_folder: /home/data/workspace/heqi/matchingloss/results/depthnet_c3vd_v2_monodepth2_ep1/models/weights_12
 
 
 ## optimizer
-scheduler_step_size: 31
-lr: [0.0001, 0.000005, 36, 0.0001, 0.00001, 36]
+lr: [0.0001, 0.00001, 26, 0.0001, 0.00001, 26]
 
 ## loss
-disable_matcher: false
-half_epoch_matcher: true
+disable_matcher: true
 disparity_smoothness: 0.001
-matcher_loss_alpha: 0.2
-confidence: 0.9
-matcher_loss_delta: 4
+ratio_consistency: false
+ratio_consistency_crop: true
+align_crop_position: true
 
 ## dataloader
-data_path: /home/data/workspace/heqi/monogastroendo/rect_c3vd_data_v2
+data_path: data/c3vd_v2/imgs
 split: c3vd_v2 # choices=["eigen_zhou", "eigen_full", "odom", "benchmark", "yifanwang", "yifanwang_cutoff1", "my_kitti", "simcol", "c3vd"]
 dataset: C3VDDataset # choices=["kitti", "kitticorres", "kitti_odom", "kitti_depth", "kitti_test", "yifanwang", "my_kitti", "simcol", "simcolcorres", "c3vd", "c3vdcorres"]
 png: true
 height: 256
 width: 320
-matcher_result_train: data/c3vd_v2/matcher_results/train.npy
-matcher_result_val: data/c3vd_v2/matcher_results/val.npy
-matcher_result_test: data/c3vd_v2/matcher_results/test.npy
+# matcher_result_train: data/c3vd_v2/matcher_results/train.npy
+# matcher_result_val: data/c3vd_v2/matcher_results/val.npy
+# matcher_result_test: data/c3vd_v2/matcher_results/test.npy
 load_depth: true
 
 ## model
-model_name: depthnet_c3vd_v2_monodepth2_ep1
+model_name: c3vd_v2/RCC_cropalign_depthnet_c3vd_v2_monodepth2
 model: EstimateDepth
 model_str: monodepth2 # choices=["lite-mono", "lite-mono-small", "lite-mono-tiny", "lite-mono-8m", "monodepth2"]
 weight_decay: 0.01
@@ -47,7 +45,8 @@ drop_path: 0.2
 num_layers: 18 # choices=[18, 34, 50, 101, 152]
 disparity_smoothness: 0.001
 scales: [0,1,2,3]
-min_depth: 0.001
-max_depth: 1.
+min_depth: 0.1
+max_depth: 100.0
 frame_ids: [0,-1,1]
-output_disp: true
+min_gt_depth: 0.001
+max_gt_depth: 1.0

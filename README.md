@@ -70,7 +70,7 @@ data
 ...
 ```
 
-Second, some image preprocessing is necessery such as undistort, filter static frames, and data split.
+Second, some image preprocessings are necessery such as undistort, filter static frames, and data split.
 
 Take ```c3vd_v2``` for instance, the following script should be processing:
 
@@ -78,7 +78,7 @@ Take ```c3vd_v2``` for instance, the following script should be processing:
 - (optional) filter static frames and data split by yourself: ```playground\heqi\C3VD\gen_split.ipynb```
 - (optional) generate ```matcher_results``` by yourself: ```playground\heqi\C3VD\gen_corres.ipynb```
 
-(optimal) Similar image preprocessing should be applied to ```simcol_complete``` as well, check ```playground\heqi\Simcol_complete```.
+(optimal) Similar image preprocessings should be applied to ```simcol_complete``` as well, check ```playground\heqi\Simcol_complete```.
 
 
 We provide two ways for generating matching results saved in ```matcher_results``` folders.
@@ -215,20 +215,46 @@ For inference only:
 ## Training
 
 To train scenes, we provide the following training scripts: 
- - Table IV (train and test on C3VD)
-    1. Monodepth2 (baseline, D): ```supervised_c3vd_v2_monodepth2.yml```
-    2. Lite-mono (baseline, D): ```supervised_c3vd_v2_litemono.yml```
-    3. MonoViT (baseline, D): ```supervised_c3vd_v2_monovit.yml```
-    4. Monodepth2 (baseline, M): ```baseline_c3vd_v2_monodepth2.yml```
-    5. Lite-mono (baseline, M): ```baseline_c3vd_v2_litemono.yml```
-    6. MonoViT (baseline, M): ```baseline_c3vd_v2_monovit.yml```
-    7. Monodepth2 (MonoLoT, M): ```RCC_matching_cropalign_c3vd_v2_monodepth2.yml```
-    8. Lite-mono (MonoLoT, M): ```RC_matching_depthnet_c3vd_v2_litemono.yml```
-    9. MonoViT (MonoLoT, M): ```RC_matching_c3vd_v2_monovit.yml```
+
+
+**Table IV: train and test on C3VD**
+|                                                                  |   |   |
+|------------------------------------------------------------------|---|---|
+| Monodepth2 (baseline)                                            | D | ```supervised_c3vd_v2_monodepth2.yml```  |
+| Lite-mono (baseline)                                             | D | ```supervised_c3vd_v2_litemono.yml```  |
+| MonoViT (baseline)                                               | D | ```supervised_c3vd_v2_monovit.yml```  |
+| Monodepth2 (baseline)                                            | M | ```baseline_c3vd_v2_monodepth2.yml```  |
+| Lite-mono (baseline)                                             | M | ```baseline_c3vd_v2_litemono.yml```  |
+| MonoViT (baseline)                                               | M | ```baseline_c3vd_v2_monovit.yml```  |
+| Monodepth2 + $\mathcal{L}_{bis}^*$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RCC_matching_cropalign_c3vd_v2_monodepth2.yml```  |
+| Lite-mono + $\mathcal{L}_{bis}^\dag$ + $\mathcal{L}_m$ (MonoLoT) | M | ```RC_matching_c3vd_v2_litemono.yml```  |
+| MonoViT + $\mathcal{L}_{bis}^\dag$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RC_matching_c3vd_v2_monovit.yml```  |
+
+
+**Table V: train and test on SimCol**
+|                                                                  |   |   |
+|------------------------------------------------------------------|---|---|
+| Monodepth2 (baseline)                                            | D | ```supervised_simcol_complete_monodepth2.yml```  |
+| Lite-mono (baseline)                                             | D | ```supervised_simcol_complete_litemono.yml```  |
+| MonoViT (baseline)                                               | D | ```supervised_simcol_complete_monovit.yml```  |
+| Monodepth2 (baseline)                                            | M | ```baseline_simcol_complete_monodepth2.yml```  |
+| Lite-mono (baseline)                                             | M | ```baseline_simcol_complete_litemono.yml```  |
+| MonoViT (baseline)                                               | M | ```baseline_simcol_complete_monovit.yml```  |
+| Monodepth2 + $\mathcal{L}_{bis}^*$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RCC_cropalign_matching_simcol_complete_monodepth2.yml```  |
+| Lite-mono + $\mathcal{L}_{bis}^*$ + $\mathcal{L}_m$ (MonoLoT) | M | ```RCC_cropalign_matching_simcol_complete_litemono.yml```  |
+| MonoViT + $\mathcal{L}_{bis}^\dag$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RC_matching_simcol_complete_monovit.yml```  |
+
+
+**Table VI: ablation study on C3VD**
+
+
+
+    
  
+
  run them with 
  ```
- python run_shell_xxx.py
+ CUDA_VISIBLE_DEVICES=0 python run.py --config experiments/<file_name>.yml --cfg_params '{"model_name": "<exp_name>"}' --seed 1243 --gpu 0 --num_workers 4
  ```
 
 The code will automatically run the entire process of: **training, encoding, decoding, testing**.

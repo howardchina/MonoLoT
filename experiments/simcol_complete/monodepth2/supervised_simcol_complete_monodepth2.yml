@@ -1,0 +1,44 @@
+## train simcol
+## trainer
+log_dir: results
+run_train: true
+num_epochs: 25
+batch_size: 12
+save_checkpoint_freq: 1
+log_freq: 500
+run_val: true
+# run_test: true
+metric_str_exclude: ["loss/photometric_1", "loss/photometric_2", "loss/photometric_3", "de/abs_rel", "de/sq_rel", "de/rms", "da/a2", "da/a3"]
+
+## checkpoints
+weights_init: pretrained # choices=["pretrained", "scratch"]
+
+## optimizer
+lr: [0.0001, 0.00001, 26, 0.0001, 0.00001, 26]
+
+## loss
+disable_automasking: true
+supervised: true
+
+## dataloader
+data_path: data/simcol_complete/imgs
+split: simcol_complete # choices=["eigen_zhou", "eigen_full", "odom", "benchmark", "yifanwang", "yifanwang_cutoff1", "my_kitti", "simcol", "c3vd"]
+dataset: SimcolDataset # choices=["kitti", "kitticorres", "kitti_odom", "kitti_depth", "kitti_test", "yifanwang", "my_kitti", "simcol", "simcolcorres", "c3vd", "c3vdcorres"]
+png: true
+height: 352
+width: 352
+load_depth: true
+
+## model
+model_name: supervised_depthnet_simcol_complete_monodepth2
+model: EstimateDepthSupervised
+model_str: monodepth2 # choices=["lite-mono", "lite-mono-small", "lite-mono-tiny", "lite-mono-8m", "monodepth2"]
+weight_decay: 0.01
+drop_path: 0.2
+num_layers: 18 # choices=[18, 34, 50, 101, 152]
+scales: [0,1,2,3]
+min_depth: 0.001
+max_depth: 1.0
+frame_ids: [0]
+min_gt_depth: 0.001
+max_gt_depth: 1.0

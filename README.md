@@ -70,7 +70,23 @@ data
 ...
 ```
 
-Soft link (```->```) the image folders to this workspace.
+Second, some image preprocessing is necessery such as undistort, filter static frames, and data split.
+
+Take ```c3vd_v2``` for instance, the following script should be processing:
+
+- undistort frames: ```playground\heqi\C3VD\data_preprocessing.ipynb```
+- (optional) filter static frames and data split by yourself: ```playground\heqi\C3VD\gen_split.ipynb```
+- (optional) generate ```matcher_results``` by yourself: ```playground\heqi\C3VD\gen_corres.ipynb```
+
+(optimal) Similar image preprocessing should be applied to ```simcol_complete``` as well, check ```playground\heqi\Simcol_complete```.
+
+
+We provide two ways for generating matching results saved in ```matcher_results``` folders.
+
+- (recommend) download ```matcher_results``` of ```c3vd_v2``` and ```simcol_complete``` from [here](https://www.jianguoyun.com/p/DVrMNkgQy4rfDBjWtc0FIAA)
+- (not recommend) generate the ```matcher_results``` by yourself using notebooks mentioned above such as ```playground\heqi\C3VD\gen_corres.ipynb```. As this process will take about 2-4 hours.
+
+Soft link (```->```) the well-prepared image folders to this workspace.
  
 The image folder of c3vd_v2 (<c3vd_v2_img_dir>) will be organised as follows:
 
@@ -183,14 +199,15 @@ imgs
     └── Train
 ```
 
-### Public Data (We follow suggestions from [Scaffold-GS](https://github.com/city-super/Scaffold-GS))
+
+### Public Data
 
 For both training and inference:
  - The **C3VD** dataset is available in its [Homepage](https://durrlab.github.io/C3VD/). 
  - The **SimCol** dataset is available in [rdr.ucl](https://rdr.ucl.ac.uk/articles/dataset/Simcol3D_-_3D_Reconstruction_during_Colonoscopy_Challenge_Dataset/24077763). 
 
 For inference only:
- - The **UpperGI** dataset is provided by the paper author [here](https://howardchina.github.io).
+ - The **UpperGI** dataset is available in [Jianguoyun](https://www.jianguoyun.com/p/DRoZPfUQzsq_Cxj23qIFIAA).
  - The **EndoSLAM** dataset is available in [Mendeley](https://data.mendeley.com/datasets/cd2rtzm23r/1). 
  - The **EndoMapper** dataset is available in [Synapse](https://www.synapse.org/Synapse:syn26707219/files/). 
 
@@ -198,12 +215,17 @@ For inference only:
 ## Training
 
 To train scenes, we provide the following training scripts: 
- - Tanks&Temples: ```run_shell_tnt.py```
- - MipNeRF360: ```run_shell_mip360.py```
- - BungeeNeRF: ```run_shell_bungee.py```
- - Deep Blending: ```run_shell_db.py```
- - Nerf Synthetic: ```run_shell_blender.py```
-
+ - Table IV (train and test on C3VD)
+    1. Monodepth2 (baseline, D): ```supervised_c3vd_v2_monodepth2.yml```
+    2. Lite-mono (baseline, D): ```supervised_c3vd_v2_litemono.yml```
+    3. MonoViT (baseline, D): ```supervised_c3vd_v2_monovit.yml```
+    4. Monodepth2 (baseline, M): ```baseline_c3vd_v2_monodepth2.yml```
+    5. Lite-mono (baseline, M): ```baseline_c3vd_v2_litemono.yml```
+    6. MonoViT (baseline, M): ```baseline_c3vd_v2_monovit.yml```
+    7. Monodepth2 (MonoLoT, M): ```RCC_matching_cropalign_c3vd_v2_monodepth2.yml```
+    8. Lite-mono (MonoLoT, M): ```RC_matching_depthnet_c3vd_v2_litemono.yml```
+    9. MonoViT (MonoLoT, M): ```RC_matching_c3vd_v2_monovit.yml```
+ 
  run them with 
  ```
  python run_shell_xxx.py

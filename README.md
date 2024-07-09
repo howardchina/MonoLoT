@@ -214,10 +214,10 @@ For inference only:
 
 ## Training
 
-To train scenes, we provide the following training scripts: 
+To train scenes, we provide the following training scripts saved at `experiments` folder: 
 
 
-**Table IV: train and test on C3VD**
+**Table IV: train and test on C3VD** (with training scripts saved at `experiments\c3vd_v2\` folder)
 |                                                                  |   |   |
 |------------------------------------------------------------------|---|---|
 | Monodepth2 (baseline)                                            | D | ```supervised_c3vd_v2_monodepth2.yml```  |
@@ -231,7 +231,7 @@ To train scenes, we provide the following training scripts:
 | MonoViT + $\mathcal{L}_{bis}^+$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RC_matching_c3vd_v2_monovit.yml```  |
 
 
-**Table V: train and test on SimCol**
+**Table V: train and test on SimCol** (with training scripts saved at `experiments\simcol_complete\` folder)
 |                                                                  |   |   |
 |------------------------------------------------------------------|---|---|
 | Monodepth2 (baseline)                                            | D | ```supervised_simcol_complete_monodepth2.yml```  |
@@ -245,7 +245,29 @@ To train scenes, we provide the following training scripts:
 | MonoViT + $\mathcal{L}_{bis}^+$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RC_matching_simcol_complete_monovit.yml```  |
 
 
-**Table VI: ablation study on C3VD**
+**Table VI: ablation study on C3VD** (with training scripts saved at `experiments\ablation_c3vd_v2\` folder)
+|            | $\mathcal{L}_{bis}^+$ | $\mathcal{L}_{bis}^*$ | $\mathcal{L}_m$ |   |
+|------------|-----------------------|-----------------------|-----------------|---|
+| Monodepth2 | baseline              |                       |                 | ```monodepth2baseline_c3vd_v2_monodepth2.yml```  |
+|            | &check;               |                       |                 | ```monodepth2RC_baseline_c3vd_v2_monodepth2.yml```  |
+|            |                       | &check;               |                 | ```monodepth2RCC_cropalign_c3vd_v2_monodepth2.yml```  |
+|            |                       |                       | &check;         | ```monodepth2matching_c3vd_v2_monodepth2.yml```  |
+|            | &check;               |                       | &check;         | ```monodepth2RC_matching_c3vd_v2_monodepth2.yml```  |
+|            |                       | &check;               | &check;         | ```monodepth2RCC_matching_cropalign_c3vd_v2_monodepth2.yml```  |
+| Lite-mono  | baseline              |                       |                 | ```baseline_c3vd_v2_litemono.yml```  |
+|            | &check;               |                       |                 | ```RC_baseline_c3vd_v2_litemono.yml```  |
+|            |                       | &check;               |                 | ```RCC_cropalign_c3vd_v2_litemono.yml```  |
+|            |                       |                       | &check;         | ```matching_c3vd_v2_litemono.yml```  |
+|            | &check;               |                       | &check;         | ```RC_matching_c3vd_v2_litemono.yml```  |
+|            |                       | &check;               | &check;         | ```RCC_cropalign_matching_c3vd_v2_litemono.yml```  |
+| MonoViT    | baseline              |                       |                 | ```baseline_c3vd_v2_monovit.yml```  |
+|            | &check;               |                       |                 | ```RC_baseline_c3vd_v2_monovit.yml```  |
+|            |                       | &check;               |                 | ```RCC_cropalign_c3vd_v2_monovit.yml```  |
+|            |                       |                       | &check;         | ```matching_c3vd_v2_monovit.yml```  |
+|            | &check;               |                       | &check;         | ```RC_matching_c3vd_v2_monovit.yml```  |
+|            |                       | &check;               | &check;         | ```RCC_cropalign_matching_c3vd_v2_monovit.yml```  |
+
+
 
 
 

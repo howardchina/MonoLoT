@@ -7,7 +7,7 @@ Guang Feng,
 [Danail Stoyanov](https://profiles.ucl.ac.uk/32290),
 [Siyang Zuo](https://scholar.google.co.uk/citations?user=FPFY0CgAAAAJ&hl=en)
 
- [[`IEEExplore`](https://ieeexplore.ieee.org/document/10587075)][[`YouTube`](https://youtu.be/7mAyTpjI13Q?si=JvnwjsjJyxkJ7LiD)] [[`Github`](https://github.com/howardchina/MonoLoT)][[`PDF in Google Drive`](https://drive.google.com/file/d/12DyEv0R_qfWXiO7U9K04PKGjAxE6sLnw/view?usp=sharing)]
+ [[`IEEExplore`](https://ieeexplore.ieee.org/document/10587075)][[`YouTube`](https://youtu.be/7mAyTpjI13Q?si=JvnwjsjJyxkJ7LiD)] [[`Github`](https://github.com/howardchina/MonoLoT)]
 
 
 ## Overview

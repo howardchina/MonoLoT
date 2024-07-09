@@ -248,12 +248,12 @@ To train scenes, we provide the following training scripts saved at `experiments
 **Table VI: ablation study on C3VD** (with training scripts saved at `experiments\ablation_c3vd_v2\` folder)
 |            | $\mathcal{L}_{bis}^+$ | $\mathcal{L}_{bis}^*$ | $\mathcal{L}_m$ |   |
 |------------|-----------------------|-----------------------|-----------------|---|
-| Monodepth2 | baseline              |                       |                 | ```monodepth2baseline_c3vd_v2_monodepth2.yml```  |
-|            | &check;               |                       |                 | ```monodepth2RC_baseline_c3vd_v2_monodepth2.yml```  |
-|            |                       | &check;               |                 | ```monodepth2RCC_cropalign_c3vd_v2_monodepth2.yml```  |
-|            |                       |                       | &check;         | ```monodepth2matching_c3vd_v2_monodepth2.yml```  |
-|            | &check;               |                       | &check;         | ```monodepth2RC_matching_c3vd_v2_monodepth2.yml```  |
-|            |                       | &check;               | &check;         | ```monodepth2RCC_matching_cropalign_c3vd_v2_monodepth2.yml```  |
+| Monodepth2 | baseline              |                       |                 | ```baseline_c3vd_v2_monodepth2.yml```  |
+|            | &check;               |                       |                 | ```RC_baseline_c3vd_v2_monodepth2.yml```  |
+|            |                       | &check;               |                 | ```RCC_cropalign_c3vd_v2_monodepth2.yml```  |
+|            |                       |                       | &check;         | ```matching_c3vd_v2_monodepth2.yml```  |
+|            | &check;               |                       | &check;         | ```RC_matching_c3vd_v2_monodepth2.yml```  |
+|            |                       | &check;               | &check;         | ```RCC_matching_cropalign_c3vd_v2_monodepth2.yml```  |
 | Lite-mono  | baseline              |                       |                 | ```baseline_c3vd_v2_litemono.yml```  |
 |            | &check;               |                       |                 | ```RC_baseline_c3vd_v2_litemono.yml```  |
 |            |                       | &check;               |                 | ```RCC_cropalign_c3vd_v2_litemono.yml```  |
@@ -269,6 +269,27 @@ To train scenes, we provide the following training scripts saved at `experiments
 
 
 
+**Table VII: ablation study on SimCol** (with training scripts saved at `experiments\ablation_simcol_complete\` folder)
+|            | $\mathcal{L}_{bis}^+$ | $\mathcal{L}_{bis}^*$ | $\mathcal{L}_m$ |   |
+|------------|-----------------------|-----------------------|-----------------|---|
+| Monodepth2 | baseline              |                       |                 | ```baseline_simcol_complete_monodepth2.yml```  |
+|            | &check;               |                       |                 | ```RC_simcol_complete_monodepth2.yml```  |
+|            |                       | &check;               |                 | ```RCC_cropalign_simcol_complete_monodepth2.yml```  |
+|            |                       |                       | &check;         | ```matching_simcol_complete_monodepth2.yml```  |
+|            | &check;               |                       | &check;         | ```RC_matching_simcol_complete_monodepth2.yml```  |
+|            |                       | &check;               | &check;         | ```RCC_cropalign_matching_simcol_complete_monodepth2.yml```  |
+| Lite-mono  | baseline              |                       |                 | ```baseline_simcol_complete_litemono.yml```  |
+|            | &check;               |                       |                 | ```RC_simcol_complete_litemono.yml```  |
+|            |                       | &check;               |                 | ```RCC_cropalign_simcol_complete_litemono.yml```  |
+|            |                       |                       | &check;         | ```matching_simcol_complete_litemono.yml```  |
+|            | &check;               |                       | &check;         | ```RC_matching_simcol_complete_litemono.yml```  |
+|            |                       | &check;               | &check;         | ```RCC_cropalign_matching_simcol_complete_litemono.yml```  |
+| MonoViT    | baseline              |                       |                 | ```baseline_simcol_complete_monovit.yml```  |
+|            | &check;               |                       |                 | ```RC_baseline_simcol_complete_monovit.yml```  |
+|            |                       | &check;               |                 | ```RCC_cropalign_simcol_complete_monovit.yml```  |
+|            |                       |                       | &check;         | ```matching_simcol_complete_monovit.yml```  |
+|            | &check;               |                       | &check;         | ```RC_matching_simcol_complete_monovit.yml```  |
+|            |                       | &check;               | &check;         | ```RCC_cropalign_matching_simcol_complete_monovit.yml```  |
 
 
     
@@ -283,6 +304,8 @@ The code will automatically run **training**.
 - Training will be recorded in `results` folder.
 - log file will be saved in `results/<exp_name>/logs`, which can be watched by tensorboard
 - checkpoints will be saved in `results/<exp_name>/models`
+
+## Inference
 
 
 ## Contact

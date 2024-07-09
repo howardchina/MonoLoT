@@ -227,8 +227,8 @@ To train scenes, we provide the following training scripts:
 | Lite-mono (baseline)                                             | M | ```baseline_c3vd_v2_litemono.yml```  |
 | MonoViT (baseline)                                               | M | ```baseline_c3vd_v2_monovit.yml```  |
 | Monodepth2 + $\mathcal{L}_{bis}^*$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RCC_matching_cropalign_c3vd_v2_monodepth2.yml```  |
-| Lite-mono + $\mathcal{L}_{bis}^\dag$ + $\mathcal{L}_m$ (MonoLoT) | M | ```RC_matching_c3vd_v2_litemono.yml```  |
-| MonoViT + $\mathcal{L}_{bis}^\dag$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RC_matching_c3vd_v2_monovit.yml```  |
+| Lite-mono + $\mathcal{L}_{bis}^+$ + $\mathcal{L}_m$ (MonoLoT) | M | ```RC_matching_c3vd_v2_litemono.yml```  |
+| MonoViT + $\mathcal{L}_{bis}^+$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RC_matching_c3vd_v2_monovit.yml```  |
 
 
 **Table V: train and test on SimCol**
@@ -242,7 +242,7 @@ To train scenes, we provide the following training scripts:
 | MonoViT (baseline)                                               | M | ```baseline_simcol_complete_monovit.yml```  |
 | Monodepth2 + $\mathcal{L}_{bis}^*$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RCC_cropalign_matching_simcol_complete_monodepth2.yml```  |
 | Lite-mono + $\mathcal{L}_{bis}^*$ + $\mathcal{L}_m$ (MonoLoT) | M | ```RCC_cropalign_matching_simcol_complete_litemono.yml```  |
-| MonoViT + $\mathcal{L}_{bis}^\dag$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RC_matching_simcol_complete_monovit.yml```  |
+| MonoViT + $\mathcal{L}_{bis}^+$ + $\mathcal{L}_m$ (MonoLoT)   | M | ```RC_matching_simcol_complete_monovit.yml```  |
 
 
 **Table VI: ablation study on C3VD**

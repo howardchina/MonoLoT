@@ -7,7 +7,7 @@ Guang Feng,
 [Danail Stoyanov](https://profiles.ucl.ac.uk/32290),
 [Siyang Zuo](https://scholar.google.co.uk/citations?user=FPFY0CgAAAAJ&hl=en)
 
-[[`PDF in Google Drive`](https://drive.google.com/file/d/12DyEv0R_qfWXiO7U9K04PKGjAxE6sLnw/view?usp=sharing)] [[`YouTube`](https://youtu.be/7mAyTpjI13Q?si=JvnwjsjJyxkJ7LiD)] [[`Github`](https://github.com/howardchina/MonoLoT)]
+ [[`IEEExplore`](https://ieeexplore.ieee.org/document/10587075)][[`YouTube`](https://youtu.be/7mAyTpjI13Q?si=JvnwjsjJyxkJ7LiD)] [[`Github`](https://github.com/howardchina/MonoLoT)][[`PDF in Google Drive`](https://drive.google.com/file/d/12DyEv0R_qfWXiO7U9K04PKGjAxE6sLnw/view?usp=sharing)]
 
 
 ## Overview
@@ -226,12 +226,14 @@ The code will automatically run the entire process of: **training, encoding, dec
 If you find our work helpful, please consider citing:
 
 ```bibtex
-@inproceedings{hac2024,
-  title={HAC: Hash-grid Assisted Context for 3D Gaussian Splatting Compression},
-  author={Chen, Yihang and Wu, Qianyi and Lin, Weiyao and Harandi, Mehrtash and Cai, Jianfei},
-  booktitle={European Conference on Computer Vision},
-  year={2024}
-}
+@ARTICLE{10587075,
+  author={He, Qi and Feng, Guang and Bano, Sophia and Stoyanov, Danail and Zuo, Siyang},
+  journal={IEEE Journal of Biomedical and Health Informatics}, 
+  title={MonoLoT: Self-Supervised Monocular Depth Estimation in Low-Texture Scenes for Automatic Robotic Endoscopy}, 
+  year={2024},
+  pages={1-14},
+  keywords={Estimation;Endoscopes;Training;Data models;Robots;Feature extraction;Image reconstruction;Monocular depth estimation;automatic intervention;digestive endoscopy},
+  doi={10.1109/JBHI.2024.3423791}}
 ```
 
 

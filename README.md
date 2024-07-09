@@ -187,16 +187,13 @@ imgs
 
 For both training and inference:
  - The **C3VD** dataset is available in its [Homepage](https://durrlab.github.io/C3VD/). 
- - The **SimCol** dataset is provided by the paper author [here](https://sophiabano.github.io/). 
+ - The **SimCol** dataset is available in [rdr.ucl](https://rdr.ucl.ac.uk/articles/dataset/Simcol3D_-_3D_Reconstruction_during_Colonoscopy_Challenge_Dataset/24077763). 
 
 For inference only:
  - The **UpperGI** dataset is provided by the paper author [here](https://howardchina.github.io).
- - The **EndoSLAM** dataset is available in its [Homepage](https://durrlab.github.io/C3VD/). 
- - The **EndoMapper** dataset is available in its [Homepage](https://durrlab.github.io/C3VD/). 
+ - The **EndoSLAM** dataset is available in [Mendeley](https://data.mendeley.com/datasets/cd2rtzm23r/1). 
+ - The **EndoMapper** dataset is available in [Synapse](https://www.synapse.org/Synapse:syn26707219/files/). 
 
-### Custom Data
-
-For custom data, you should process the image sequences with [Colmap](https://colmap.github.io/) to obtain the SfM points and camera poses. Then, place the results into ```data/``` folder.
 
 ## Training
 
@@ -222,7 +219,7 @@ The code will automatically run the entire process of: **training, encoding, dec
 
 ## Contact
 
-- Yihang Chen: yhchen.ee@sjtu.edu.cn
+- Qi HE: howard@tju.edu.cn
 
 ## Citation
 
@@ -240,9 +237,13 @@ If you find our work helpful, please consider citing:
 
 ## LICENSE
 
-Please follow the LICENSE of [3D-GS](https://github.com/graphdeco-inria/gaussian-splatting).
+<div class="row" style="margin: 0px;">
+            <div class="col text-center" style="margin: 0px;padding: 0px;margin-top: 40px;"><p xmlns:cc="http://creativecommons.org/ns#" >This work is licensed under <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/?ref=chooser-v1" target="_blank" rel="license noopener noreferrer" style="display:inline-block;">CC BY-NC-SA 4.0<img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/cc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/by.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/nc.svg?ref=chooser-v1"><img style="height:22px!important;margin-left:3px;vertical-align:text-bottom;" src="https://mirrors.creativecommons.org/presskit/icons/sa.svg?ref=chooser-v1"></a></p></div>
+        </div>
 
 ## Acknowledgement
 
- - We thank all authors from [3D-GS](https://github.com/graphdeco-inria/gaussian-splatting) for presenting such an excellent work.
- - We thank all authors from [Scaffold-GS](https://github.com/city-super/Scaffold-GS) for presenting such an excellent work.
+ - We thank all authors from [C3VD](https://durrlab.github.io/C3VD/) for presenting such an excellent work.
+ - We thank all authors from [SimCol3D](https://github.com/anitarau/simcol) for presenting such an excellent work.
+ - We thank all authors from [EndoSLAM](https://github.com/CapsuleEndoscope/EndoSLAM) for presenting such an excellent work.
+ - We thank all authors from [EndoMapper](https://sites.google.com/unizar.es/endomapper/home) for presenting such an excellent work.
